@@ -8,7 +8,7 @@ const nextConfig = {
     /**
      * Provide the locales you want to support in your application
      */
-    locales: ["en", "zn"],
+    locales: ["en", "zn", "kr", "span", "jpn"],
     /**
      * This is the default locale you want to be used when visiting
      * a non-locale prefixed path.

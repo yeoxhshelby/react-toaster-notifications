@@ -12,13 +12,16 @@ import {
 } from "@mui/material";
 import Rating from "@mui/material/Rating";
 import Image from "next/image";
-import beam1 from '../images/beam1.jpg'
-import beam2 from '../images/beam2.jpg'
+import beam1 from "../images/beam1.jpg";
+import beam2 from "../images/beam2.jpg";
 import beam3 from "../images/beam3.jpg";
 import { useRouter } from "next/router";
 import { styled } from "@mui/material/styles";
 import en from "../locales/en";
 import zn from "../locales/zn";
+import jpn from "../locales/jpn";
+import kr from "../locales/kr";
+import span from "../locales/span";
 import ResponsiveAppBar from "@/components/header";
 import StarIcon from "@mui/icons-material/Star";
 import AspectRatio from "@mui/joy/AspectRatio";
@@ -26,7 +29,20 @@ import AspectRatio from "@mui/joy/AspectRatio";
 function MyCarousel() {
   const router = useRouter();
   const { locale } = router;
-  const t = locale === "en" ? en : zn;
+
+  let t;
+  if (locale === "kr") {
+    t = kr;
+  } else if (locale === "zn") {
+    t = zn;
+  } else if (locale === "jpn") {
+    t = jpn;
+  } else if (locale === "span") {
+    t = span;
+  } else {
+    t = en;
+  }
+
   const StyledRating = styled(Rating)({
     "& .MuiRating-iconFilled": {
       color: "#00C853",

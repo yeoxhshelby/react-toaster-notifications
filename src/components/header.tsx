@@ -64,6 +64,9 @@ function ResponsiveAppBar() {
             >
               <MenuItem value="en">EN</MenuItem>
               <MenuItem value="zn">ZN</MenuItem>
+              <MenuItem value="kr">KR</MenuItem>
+              <MenuItem value="span">SPAN</MenuItem>
+              <MenuItem value="jpn">JPN</MenuItem>
             </Select>
           </FormControl>
         </Toolbar>
