@@ -1,4 +1,5 @@
 export default {
+  listing_tag: "购买",
   description: "描述",
   dimensions: "尺寸",
   width: "宽度",
@@ -10,4 +11,8 @@ export default {
   time_of_post: "发布日期",
   owner_of_post: "发布者",
   company: "公司",
+  review: "评论",
+  add_comment: "添加评论",
+  yes: "可",
+  no: "否",
 };

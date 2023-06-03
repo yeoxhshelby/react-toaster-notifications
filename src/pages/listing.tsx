@@ -1,52 +1,80 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
-import { Paper, Button, Box, Typography, Divider } from "@mui/material";
+import {
+  Paper,
+  Button,
+  Box,
+  Typography,
+  Divider,
+  Grid,
+  Stack,
+  Avatar,
+} from "@mui/material";
+import Rating from "@mui/material/Rating";
 import Image from "next/image";
-import img from "../adv.png";
+import beam1 from '../images/beam1.jpg'
+import beam2 from '../images/beam2.jpg'
+import beam3 from "../images/beam3.jpg";
 import { useRouter } from "next/router";
-import Link from "next/link";
-
+import { styled } from "@mui/material/styles";
 import en from "../locales/en";
 import zn from "../locales/zn";
 import ResponsiveAppBar from "@/components/header";
+import StarIcon from "@mui/icons-material/Star";
+import AspectRatio from "@mui/joy/AspectRatio";
 
 function MyCarousel() {
   const router = useRouter();
   const { locale } = router;
   const t = locale === "en" ? en : zn;
+  const StyledRating = styled(Rating)({
+    "& .MuiRating-iconFilled": {
+      color: "#00C853",
+    },
+  });
 
   const items = [
     {
-      src: img,
-      alt: "Image 1",
+      src: beam1,
+      alt: "beam1",
     },
     {
-      src: img,
-      alt: "Image 2",
+      src: beam2,
+      alt: "beam2",
     },
     {
-      src: img,
-      alt: "Image 3",
+      src: beam3,
+      alt: "beam3",
     },
   ];
 
   return (
     <>
       <ResponsiveAppBar />
-      <main className="flex flex-col justify-between p-8">
-        <Carousel>
-          {items.map((item, index) => (
+      <Box
+        sx={{
+          display: "flex-col",
+          justifyContent: "space-between",
+          px: 10,
+          pt: 2,
+        }}
+      >
+        <Carousel sx={{ height: "500px", width: "100%" }}>
+          {items.map((item) => (
             <Paper key={item.alt}>
-              <Image
-                key={item.alt}
-                src={item.src}
-                alt={item.alt}
-                width={1950}
-                height={300}
-              />
+              <AspectRatio objectFit="contain">
+                <Image
+                  key={item.alt}
+                  src={item.src}
+                  alt={item.alt}
+                  width={1950}
+                  height={300}
+                />
+              </AspectRatio>
             </Paper>
           ))}
         </Carousel>
+
         <Box sx={{ display: "flex" }}>
           <Box
             sx={{
@@ -58,7 +86,7 @@ function MyCarousel() {
               borderRadius: 2,
             }}
           >
-            Buy
+            {t.listing_tag}
           </Box>
           <Typography sx={{ marginLeft: 3, fontSize: 25, fontWeight: "bold" }}>
             Long Beams
@@ -112,13 +140,13 @@ function MyCarousel() {
             <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>
               {t.negotiable}?
             </Typography>
-            <Typography sx={{ fontSize: 20 }}>Yes</Typography>
+            <Typography sx={{ fontSize: 20 }}>{t.yes}</Typography>
           </Box>
           <Box>
             <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>
               {t.unit_price}?
             </Typography>
-            <Typography sx={{ fontSize: 20 }}>No</Typography>
+            <Typography sx={{ fontSize: 20 }}>{t.no}</Typography>
           </Box>
           <Box>
             <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>
@@ -133,7 +161,7 @@ function MyCarousel() {
             <Typography sx={{ fontSize: 20 }}>01 Jan 2023</Typography>
           </Box>
         </Box>
-        <Box sx={{ display: "flex", gap: 10, mt: 2 }}>
+        <Box sx={{ display: "flex", gap: 10, mt: 2, mb: 2 }}>
           <Box>
             <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>
               {t.owner_of_post}
@@ -147,7 +175,76 @@ function MyCarousel() {
             <Typography sx={{ fontSize: 20 }}>Tan’s Metal PTE LTD</Typography>
           </Box>
         </Box>
-      </main>
+        <Divider />
+        <Box display="flex" sx={{ mt: 2 }}>
+          <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>
+            {t.review}
+          </Typography>
+          <Button sx={{ fontSize: 15, ml: "300px" }}>{t.add_comment}</Button>
+        </Box>
+        <Box sx={{ width: 1 / 2, pt: "36px" }}>
+          <Grid container>
+            <Grid item xs={6}>
+              <Box display="flex" sx={{ mb: 2 }}>
+                <Avatar />
+                <Typography
+                  sx={{
+                    fontWeight: 600,
+                    my: "auto",
+                    ml: 1,
+                  }}
+                >
+                  Jimmy Calderon
+                </Typography>
+              </Box>
+              The seller is really nice and he gave me 10% off!
+            </Grid>
+            <Grid item xs={6}>
+              <Stack direction="row" spacing={-1}>
+                <Typography sx={{ mx: 2, fontWeight: "bold" }}>{2}</Typography>
+                <StyledRating
+                  name="half-rating"
+                  value={2}
+                  precision={0.5}
+                  emptyIcon={<StarIcon />}
+                  readOnly
+                />
+              </Stack>
+            </Grid>
+          </Grid>
+          <Divider sx={{ my: 2 }} />
+          <Grid container>
+            <Grid item xs={6}>
+              <Box display="flex" sx={{ mb: 2 }}>
+                <Avatar />
+                <Typography
+                  sx={{
+                    fontWeight: 600,
+                    my: "auto",
+                    ml: 1,
+                  }}
+                >
+                  Cade Vang
+                </Typography>
+              </Box>
+              The seller is really nice and he gave me 10% off!
+            </Grid>
+            <Grid item xs={6}>
+              <Stack direction="row" spacing={-1}>
+                <Typography sx={{ mx: 2, fontWeight: "bold" }}>{2}</Typography>
+                <StyledRating
+                  name="half-rating"
+                  value={2}
+                  precision={0.5}
+                  emptyIcon={<StarIcon />}
+                  readOnly
+                />
+              </Stack>
+            </Grid>
+          </Grid>
+          <Divider sx={{ mt: 2 }} />
+        </Box>
+      </Box>
     </>
   );
 }
