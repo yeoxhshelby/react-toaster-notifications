@@ -16,4 +16,5 @@ export default {
   add_comment: 'Add Comment',
   yes: 'Yes',  
   no: "No",
+  chat_now: 'Chat Now'
 };

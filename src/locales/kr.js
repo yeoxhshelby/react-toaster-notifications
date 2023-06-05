@@ -16,4 +16,5 @@ export default {
   add_comment: "댓글 추가",
   yes: "예",
   no: "아니요",
+  chat_now: "지금 채팅하기",
 };

@@ -16,4 +16,5 @@ export default {
   add_comment: "コメントを追加",
   yes: "はい",
   no: "いいえ",
+  chat_now: "今すぐチャット",
 };

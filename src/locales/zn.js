@@ -15,4 +15,5 @@ export default {
   add_comment: "添加评论",
   yes: "可",
   no: "否",
+  chat_now: "开始聊天",
 };
