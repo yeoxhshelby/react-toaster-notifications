@@ -6,29 +6,11 @@ import {
   Card,
   CardContent,
 } from "@mui/material";
-import en from "../locales/en";
-import zn from "../locales/zn";
-import jpn from "../locales/jpn";
-import kr from "../locales/kr";
-import span from "../locales/span";
 import { useRouter } from "next/router";
 
 const ChatNow = () => {
      const router = useRouter();
      const { locale } = router;
-
-     let t;
-     if (locale === "kr") {
-       t = kr;
-     } else if (locale === "zn") {
-       t = zn;
-     } else if (locale === "jpn") {
-       t = jpn;
-     } else if (locale === "span") {
-       t = span;
-     } else {
-       t = en;
-     }
   return (
     <Card
       sx={({ palette }) => ({

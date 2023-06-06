@@ -15,34 +15,15 @@ import Image from "next/image";
 import beam1 from "../images/beam1.jpg";
 import beam2 from "../images/beam2.jpg";
 import beam3 from "../images/beam3.jpg";
-import { useRouter } from "next/router";
 import { styled } from "@mui/material/styles";
-import en from "../locales/en";
-import zn from "../locales/zn";
-import jpn from "../locales/jpn";
-import kr from "../locales/kr";
-import span from "../locales/span";
 import ResponsiveAppBar from "@/components/header";
 import StarIcon from "@mui/icons-material/Star";
 import AspectRatio from "@mui/joy/AspectRatio";
 import ChatNow from "@/components/card";
+import { useTranslation } from "react-i18next";
 
 function MyCarousel() {
-  const router = useRouter();
-  const { locale } = router;
-
-  let t;
-  if (locale === "kr") {
-    t = kr;
-  } else if (locale === "zn") {
-    t = zn;
-  } else if (locale === "jpn") {
-    t = jpn;
-  } else if (locale === "span") {
-    t = span;
-  } else {
-    t = en;
-  }
+  const { t } = useTranslation();
 
   const StyledRating = styled(Rating)({
     "& .MuiRating-iconFilled": {
@@ -91,7 +72,7 @@ function MyCarousel() {
             </Paper>
           ))}
         </Carousel>
-        <Box sx={{ display: "flex", mt: '100px' }}>
+        <Box sx={{ display: "flex", mt: "100px" }}>
           <Box width={2 / 3}>
             <Box sx={{ display: "flex" }}>
               <Box
@@ -104,7 +85,7 @@ function MyCarousel() {
                   borderRadius: 2,
                 }}
               >
-                {t.listing_tag}
+               {t("listing_tag")}
               </Box>
               <Typography
                 sx={{ marginLeft: 3, fontSize: 25, fontWeight: "bold" }}
@@ -117,7 +98,7 @@ function MyCarousel() {
             </Typography>
             <Divider />
             <Typography sx={{ fontSize: 25, fontWeight: "bold", marginTop: 2 }}>
-              {t.description}
+              {t("description")}
             </Typography>
             <Box>
               <Typography>
@@ -133,24 +114,24 @@ function MyCarousel() {
               </Typography>
             </Box>
             <Typography sx={{ fontSize: 25, fontWeight: "bold", marginTop: 2 }}>
-              {t.dimensions}
+              {t("dimensions")}
             </Typography>
             <Box sx={{ display: "flex", gap: 10 }}>
               <Box>
                 <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>
-                  {t.width}
+                  {t("width")}
                 </Typography>
                 <Typography sx={{ fontSize: 20 }}>69mm</Typography>
               </Box>
               <Box>
                 <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>
-                  {t.height}
+                  {t("height")}
                 </Typography>
                 <Typography sx={{ fontSize: 20 }}>69mm</Typography>
               </Box>
               <Box>
                 <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>
-                  {t.height}
+                  {t("height")}
                 </Typography>
                 <Typography sx={{ fontSize: 20 }}>69mm</Typography>
               </Box>
@@ -159,25 +140,25 @@ function MyCarousel() {
             <Box sx={{ display: "flex", gap: 10 }}>
               <Box>
                 <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>
-                  {t.negotiable}?
+                  {t("negotiable")}?
                 </Typography>
-                <Typography sx={{ fontSize: 20 }}>{t.yes}</Typography>
+                <Typography sx={{ fontSize: 20 }}>{t("yes")}</Typography>
               </Box>
               <Box>
                 <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>
-                  {t.unit_price}?
+                  {t("unit_price")}?
                 </Typography>
-                <Typography sx={{ fontSize: 20 }}>{t.no}</Typography>
+                <Typography sx={{ fontSize: 20 }}>{t("no")}</Typography>
               </Box>
               <Box>
                 <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>
-                  {t.category}
+                  {t("category")}
                 </Typography>
                 <Typography sx={{ fontSize: 20 }}>Beams</Typography>
               </Box>
               <Box>
                 <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>
-                  {t.time_of_post}
+                  {t("time_of_post")}
                 </Typography>
                 <Typography sx={{ fontSize: 20 }}>01 Jan 2023</Typography>
               </Box>
@@ -185,13 +166,13 @@ function MyCarousel() {
             <Box sx={{ display: "flex", gap: 10, mt: 2, mb: 2 }}>
               <Box>
                 <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>
-                  {t.owner_of_post}
+                  {t("owner_of_post")}
                 </Typography>
                 <Typography sx={{ fontSize: 20 }}>Tim Lim</Typography>
               </Box>
               <Box>
                 <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>
-                  {t.company}
+                  {t("company")}
                 </Typography>
                 <Typography sx={{ fontSize: 20 }}>
                   Tan’s Metal PTE LTD
@@ -199,14 +180,6 @@ function MyCarousel() {
               </Box>
             </Box>
             <Divider />
-            <Box display="flex" sx={{ mt: 2 }}>
-              <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>
-                {t.review}
-              </Typography>
-              <Button sx={{ fontSize: 15, ml: "300px" }}>
-                {t.add_comment}
-              </Button>
-            </Box>
             <Box sx={{ width: 1 / 2, pt: "36px" }}>
               <Grid container>
                 <Grid item xs={6}>
@@ -274,8 +247,8 @@ function MyCarousel() {
               <Divider sx={{ mt: 2 }} />
             </Box>
           </Box>
-          <Box width={1 / 3} sx={{ml: '200px'}}>
-            <ChatNow />
+          <Box width={1 / 3} sx={{ ml: "200px" }}>
+            {/* <ChatNow /> */}
           </Box>
         </Box>
       </Box>

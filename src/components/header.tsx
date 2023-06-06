@@ -7,11 +7,10 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Image from "next/image";
 import { Select, FormControl, MenuItem, InputLabel } from "@mui/material";
-import Link from "next/link";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
-import en from "../locales/en";
-import zn from "../locales/zn";
+
 
 
 const pages = ["Products", "Pricing", "Blog"];
@@ -21,11 +20,11 @@ function ResponsiveAppBar() {
 
  const router = useRouter();
  const { locale } = router;
- const t = locale === "en" ? en : zn;
+ const {i18n } = useTranslation("translation");
 
- const changeLanguage = (e: { target: { value: any; }; }) => {
-   const locale = e.target.value;
-   router.push(router.pathname, router.asPath, { locale });
+ const handlechange = (e: { target: { value: any; }; }) => {
+   const language = e.target.value;
+   i18n.changeLanguage(language); //change the language
  };
 
   return (
@@ -57,16 +56,13 @@ function ResponsiveAppBar() {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              defaultValue={locale}
-              value={locale}
+              // defaultValue={locale}
+              // value={locale}
               label="language"
-              onChange={changeLanguage}
+              onChange={handlechange}
             >
               <MenuItem value="en">EN</MenuItem>
               <MenuItem value="zn">ZN</MenuItem>
-              <MenuItem value="kr">KR</MenuItem>
-              <MenuItem value="span">SPAN</MenuItem>
-              <MenuItem value="jpn">JPN</MenuItem>
             </Select>
           </FormControl>
         </Toolbar>
